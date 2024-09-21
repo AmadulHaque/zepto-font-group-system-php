@@ -40,12 +40,20 @@ class Database {
         return $this->pdo;
     }
 
-
-    public  function query($sql, $params = [])
+    public function query($sql, $params = [])
     {
         $stmt = $this->pdo->prepare($sql);
+        
+        // Execute the statement with the provided parameters
         $stmt->execute($params);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        
+        // Return the number of affected rows for insertions
+        if (strpos($sql, 'INSERT') !== false) {
+            return $stmt->rowCount(); // Return number of rows affected
+        }
+        
+        // Fetch results for select queries
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }

@@ -182,6 +182,6 @@ class Router
      */
     protected function notFound()
     {
-        return "404 - Not Found";
+        return abrot(404);
     }
 }

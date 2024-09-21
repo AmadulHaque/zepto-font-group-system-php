@@ -101,9 +101,7 @@ if (! function_exists('asset_path')) {
 if (!function_exists('abrot')) {
     function abrot(string $view)
     {
-    
         require __DIR__ . "/../../views/errors/{$view}.php";    
-       
     }
 }
 
@@ -117,6 +115,19 @@ if (!function_exists('config')) {
     }
 }
 
+if (!function_exists('jsonResponse')) {
+    function jsonResponse($data, $status) 
+    {
+        http_response_code($status);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
+}
 
-
-
+if (!function_exists('public_path')) {
+    function public_path($path = '')
+    {
+        return __DIR__ . '/../../public/' . $path; 
+    }
+}

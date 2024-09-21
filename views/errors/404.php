@@ -1,11 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found</title>
-    <style>
+<?php
+include __DIR__ . "/../../views/layouts/header.php" ;
+?>
+ <style>
         /* Add your custom styles for the 404 page */
         body {
             font-family: Arial, sans-serif;
@@ -18,9 +15,12 @@
             color: #333;
         }
     </style>
-</head>
-<body>
-    <h1>404 Not Found</h1>
-    <p>Sorry, the page you are looking for could not be found.</p>
-</body>
-</html>
+
+    
+<h1>404 Not Found</h1>
+<p>Sorry, the page you are looking for could not be found.</p>
+
+
+<?php
+    include __DIR__ . "/../../views/layouts/footer.php" ;
+?>
