@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+define('APP_START', microtime(true));
+
+
+require 'vendor/autoload.php';
+require 'app/Console/Console.php';
+
+use App\Console\Console;
+
+$console = new Console();
+$console->run($argv);
+
+// chmod +x console
+
+?>
