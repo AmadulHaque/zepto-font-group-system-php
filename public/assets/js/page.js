@@ -18,7 +18,7 @@ function initAdmin() {
                         let url = a.getAttribute('href');
 
                         if (url.charAt(0) !== '#' && !a.classList.contains('no-ajax')) {
-                            admin.routes.navigate(url);
+                            admin.ajax.navigate(url);
                             admin.menu.setActive(url);
                             history.pushState(null, null, url);
                             event.preventDefault();
@@ -60,38 +60,9 @@ function initAdmin() {
                     }
                 });
             }
-        },
-        routes: {
-            paths: {},
-            define(path, handler) {
-                this.paths[path] = handler;
-            },
-            navigate(path) {
-                if (this.paths[path]) {
-                    this.paths[path](); // Call the associated handler
-                } else {
-                    console.warn('Route not defined for path:', path);
-                }
-            }
         }
     };
 
-    // Define your routes here
-    admin.routes.define('/', () => admin.ajax.navigate('/'));
-    admin.routes.define('/font/create', () => admin.ajax.navigate('/font/create'));
-    admin.routes.define('/font/group', () => admin.ajax.navigate('/font/group'));
-    admin.routes.define('/font/group/create', () => admin.ajax.navigate('/font/group/create'));
-    
-
     admin.ajax.init();
     admin.pages.init();
-}
-
-function navigate(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('app').innerHTML = data; 
-        })
-        .catch(error => console.error('Error fetching page:', error));
 }
